@@ -825,9 +825,9 @@ function handleTap(x,y){
     GS.oddLastTap=idx;
     if(idx===GS.oddTarget){
       GS.oddFeedback='correct';
-      GS.oddRound++;
-      if(GS.oddRound>=3) setTimeout(()=>doWin(),600);
-      else setTimeout(()=>newOddRound(),700);
+      const nextRound=GS.oddRound+1;
+      if(nextRound>=3) setTimeout(()=>doWin(),600);
+      else { GS.oddRound=nextRound; setTimeout(()=>newOddRound(),700); }
     } else {
       GS.oddFeedback='wrong';
       setTimeout(()=>{GS.oddFeedback=null;GS.oddLastTap=-1;},900);
